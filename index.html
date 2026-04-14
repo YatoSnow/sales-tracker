@@ -556,7 +556,7 @@ function subscribeToData(uid) {
       const y = s.year, m = s.month;
       if (!data[y]) data[y] = {};
       if (!data[y][m]) data[y][m] = [];
-      data[y][m].push({ ...s, id: doc.id });
+      data[y][m].push({ ...s, id: parseInt(doc.id) || doc.id });
     });
     // sort each month by date then id
     Object.values(data).forEach(yr => Object.values(yr).forEach(arr => arr.sort((a,b) => (a.date||'') < (b.date||'') ? -1 : 1)));
